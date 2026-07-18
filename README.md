@@ -37,8 +37,16 @@ Header: `X-Game-Key: <per-game secret from Vercel env WRITE_KEYS>`
 
 1. [turso.tech](https://turso.tech) → create database `game-leaderboards`
 2. Copy URL + read/write token
-3. Local: copy `.env.example` → `.env` and fill values
-4. Run schema: `npm run init-db`
+3. Local: copy `.env.example` → `.env` and fill values (see below)
+4. Run schema once: `npm run init-db` (reads `.env` automatically)
+
+**`.env` example** (create this file in the repo root — never commit it):
+
+```env
+TURSO_DATABASE_URL=libsql://game-leaderboards-pfaustino.aws-us-west-2.turso.io
+TURSO_AUTH_TOKEN=your-token-from-turso-connect-tab
+WRITE_KEYS={"gigazonk":"your-random-write-secret"}
+```
 
 ### 2. Vercel
 
