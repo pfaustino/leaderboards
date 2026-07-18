@@ -1,0 +1,14 @@
+{
+  "gigazonk": {
+    "name": "GigaZonk",
+    "sort": "desc",
+    "maxValue": 7200,
+    "minValue": 5,
+    "displayMeta": ["kills", "level", "character", "biome"],
+    "allowedOrigins": [
+      "http://localhost:5174",
+      "https://pfaustino.github.io",
+      "https://pfaustino.itch.io"
+    ]
+  }
+}
