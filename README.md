@@ -6,7 +6,10 @@ Live (after deploy): `https://<your-vercel-project>.vercel.app`
 
 ## Games
 
-Register games in [`games.json`](./games.json). First client: **GigaZonk** (`gigazonk`) — ranks by survival time (seconds).
+Register games in [`games.json`](./games.json):
+
+- **GigaZonk** (`gigazonk`) — ranks by survival time (seconds)
+- **Calamari Damacy** (`calamari-damacy`) — ranks by clear size (cm)
 
 ## API
 
@@ -45,7 +48,7 @@ Header: `X-Game-Key: <per-game secret from Vercel env WRITE_KEYS>`
 ```env
 TURSO_DATABASE_URL=libsql://game-leaderboards-pfaustino.aws-us-west-2.turso.io
 TURSO_AUTH_TOKEN=your-token-from-turso-connect-tab
-WRITE_KEYS={"gigazonk":"your-random-write-secret"}
+WRITE_KEYS={"gigazonk":"your-random-write-secret","calamari-damacy":"your-other-write-secret"}
 ```
 
 ### 2. Vercel
@@ -54,7 +57,7 @@ WRITE_KEYS={"gigazonk":"your-random-write-secret"}
 2. Environment variables (Production + Preview):
    - `TURSO_DATABASE_URL`
    - `TURSO_AUTH_TOKEN`
-   - `WRITE_KEYS` — JSON, e.g. `{"gigazonk":"your-random-secret"}`
+   - `WRITE_KEYS` — JSON, e.g. `{"gigazonk":"…","calamari-damacy":"…"}`
 3. Deploy
 
 ### 3. Wire a game client

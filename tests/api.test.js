@@ -10,6 +10,13 @@ describe('games', () => {
     expect(cfg?.sort).toBe('desc');
   });
 
+  it('loads calamari-damacy config', () => {
+    const cfg = getGameConfig('calamari-damacy');
+    expect(cfg?.name).toBe('Calamari Damacy');
+    expect(cfg?.sort).toBe('desc');
+    expect(cfg?.minValue).toBe(1);
+  });
+
   it('rejects unknown games', () => {
     expect(getGameConfig('not-a-game')).toBeNull();
   });
@@ -22,6 +29,11 @@ describe('cors', () => {
     expect(isAllowedOrigin('https://pfaustino.itch.io', cfg)).toBe(true);
     expect(isAllowedOrigin('https://pfaustino.github.io', cfg)).toBe(true);
     expect(isAllowedOrigin('https://evil.example', cfg)).toBe(false);
+  });
+
+  it('allows calamari localhost port', () => {
+    const cfg = getGameConfig('calamari-damacy');
+    expect(isAllowedOrigin('http://localhost:5173', cfg)).toBe(true);
   });
 });
 
@@ -37,6 +49,20 @@ describe('validate', () => {
     if (result.ok) {
       expect(result.entry.gameId).toBe('gigazonk');
       expect(result.entry.sortValue).toBe(120);
+    }
+  });
+
+  it('parses a valid calamari-damacy score', () => {
+    const result = parseScoreBody({
+      game: 'calamari-damacy',
+      player: 'Prince',
+      value: 160,
+      meta: { objects: 42, stage: 'Harbor', mode: 'size' },
+    });
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.entry.gameId).toBe('calamari-damacy');
+      expect(result.entry.sortValue).toBe(160);
     }
   });
 

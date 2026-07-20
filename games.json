@@ -10,5 +10,17 @@
       "https://pfaustino.github.io",
       "https://pfaustino.itch.io"
     ]
+  },
+  "calamari-damacy": {
+    "name": "Calamari Damacy",
+    "sort": "desc",
+    "maxValue": 10000,
+    "minValue": 1,
+    "displayMeta": ["objects", "stage", "mode", "multiplayer"],
+    "allowedOrigins": [
+      "http://localhost:5173",
+      "https://pfaustino.github.io",
+      "https://pfaustino.itch.io"
+    ]
   }
 }
