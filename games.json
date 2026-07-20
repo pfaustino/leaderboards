@@ -16,7 +16,7 @@
     "sort": "desc",
     "maxValue": 10000,
     "minValue": 1,
-    "displayMeta": ["objects", "stage", "mode", "multiplayer"],
+    "displayMeta": ["time", "objects", "stage", "mode", "multiplayer"],
     "allowedOrigins": [
       "http://localhost:5173",
       "https://pfaustino.github.io",
