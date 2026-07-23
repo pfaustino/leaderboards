@@ -22,5 +22,17 @@
       "https://pfaustino.github.io",
       "https://pfaustino.itch.io"
     ]
+  },
+  "tower-of-power": {
+    "name": "Tower of Power",
+    "sort": "desc",
+    "maxValue": 100,
+    "minValue": 1,
+    "displayMeta": ["difficulty", "crystals", "victory", "outpostHp"],
+    "allowedOrigins": [
+      "http://localhost:5185",
+      "https://pfaustino.github.io",
+      "https://pfaustino.itch.io"
+    ]
   }
 }
