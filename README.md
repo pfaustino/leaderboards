@@ -20,7 +20,7 @@ Service info and registered game ids.
 
 ### `GET /api/leaderboard?game=gigazonk&limit=50`
 
-Returns top scores for one game.
+Returns top scores for one game. By default each **player name** appears at most once (best score only; names compared case-insensitively). Set `"uniquePlayer": false` in `games.json` to allow multiple rows per player.
 
 ### `POST /api/score`
 
@@ -43,6 +43,7 @@ Header: `X-Game-Key: <per-game secret from Vercel env WRITE_KEYS>`
 2. Copy URL + read/write token
 3. Local: copy `.env.example` → `.env` and fill values (see below)
 4. Run schema once: `npm run init-db` (reads `.env` automatically)
+5. Remove duplicate historical rows (one-time or after bad data): `npm run dedupe-scores`
 
 **`.env` example** (create this file in the repo root — never commit it):
 
