@@ -27,7 +27,7 @@ export default async function handler(req, res) {
   const limit = parseLimit(req.query.limit);
 
   try {
-    const rows = await fetchTopScores(gameId, limit);
+    const rows = await fetchTopScores(gameId, limit, cfg);
     return sendJson(res, 200, cors, {
       game: gameId,
       name: cfg.name,

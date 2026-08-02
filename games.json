@@ -9,7 +9,8 @@
       "http://localhost:5174",
       "https://pfaustino.github.io",
       "https://pfaustino.itch.io"
-    ]
+    ],
+    "uniquePlayer": true
   },
   "calamari-damacy": {
     "name": "Calamari Damacy",
@@ -21,7 +22,8 @@
       "http://localhost:5173",
       "https://pfaustino.github.io",
       "https://pfaustino.itch.io"
-    ]
+    ],
+    "uniquePlayer": true
   },
   "tower-of-power": {
     "name": "Tower of Power",
@@ -33,6 +35,7 @@
       "http://localhost:5185",
       "https://pfaustino.github.io",
       "https://pfaustino.itch.io"
-    ]
+    ],
+    "uniquePlayer": true
   }
 }

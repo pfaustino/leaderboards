@@ -1,5 +1,5 @@
 import { getGameConfig } from '../lib/games.js';
-import { insertScore } from '../lib/db.js';
+import { submitScore } from '../lib/db.js';
 import { corsHeaders } from '../lib/cors.js';
 import { parseScoreBody, verifyWriteKey } from '../lib/validate.js';
 import { sendJson } from '../lib/http.js';
@@ -31,12 +31,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    await insertScore(parsed.entry);
-    return sendJson(res, 201, cors, {
+    const action = await submitScore(parsed.entry, cfg);
+    return sendJson(res, action === 'inserted' ? 201 : 200, cors, {
       ok: true,
       game: parsed.entry.gameId,
       player: parsed.entry.playerName,
       value: parsed.entry.sortValue,
+      updated: action === 'inserted',
     });
   } catch (err) {
     console.error('score insert failed', err);

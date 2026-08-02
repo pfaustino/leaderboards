@@ -7,7 +7,8 @@
     "check": "npm run lint && npm test",
     "lint": "eslint api lib tests --max-warnings 0",
     "test": "vitest run",
-    "init-db": "node scripts/init-db.mjs"
+    "init-db": "node scripts/init-db.mjs",
+    "dedupe-scores": "node scripts/dedupe-scores.mjs"
   },
   "dependencies": {
     "@libsql/client": "^0.15.15"
