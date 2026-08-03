@@ -21,7 +21,8 @@
     "allowedOrigins": [
       "http://localhost:5173",
       "https://pfaustino.github.io",
-      "https://pfaustino.itch.io"
+      "https://pfaustino.itch.io",
+      "https://calamari-damacy.vercel.app"
     ],
     "uniquePlayer": true
   },
