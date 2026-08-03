@@ -35,6 +35,12 @@ describe('cors', () => {
     const cfg = getGameConfig('calamari-damacy');
     expect(isAllowedOrigin('http://localhost:5173', cfg)).toBe(true);
   });
+
+  it('allows any configured origin on preflight (no game config)', () => {
+    // OPTIONS preflight has no body, so game config is unknown
+    expect(isAllowedOrigin('https://calamari-damacy.vercel.app', null)).toBe(true);
+    expect(isAllowedOrigin('https://evil.example', null)).toBe(false);
+  });
 });
 
 describe('validate', () => {
