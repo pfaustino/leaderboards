@@ -142,13 +142,16 @@ Use a lowercase kebab-case `id` (this becomes the `game` query param and POST bo
 
 ### 2. Add a write key in Vercel
 
-In the leaderboards Vercel project, edit the `WRITE_KEYS` environment variable (Production **and** Preview). Add a new random secret keyed by the same game id:
+In the leaderboards Vercel project, edit the `WRITE_KEYS` environment variable (Production **and** Preview).
+
+⚠️ **Do not replace the whole value** — `WRITE_KEYS` is a JSON object mapping every game id to its secret. If you overwrite it with only the new game entry, the other games' writes start failing with 401. **Copy the current value, then add your new entry** to the existing JSON:
 
 ```json
 {
-  "gigazonk": "…",
-  "calamari-damacy": "…",
-  "tower-of-power": "generate-a-long-random-string"
+  "gigazonk": "existing-gigazonk-secret",
+  "calamari-damacy": "existing-calamari-secret",
+  "tower-of-power": "existing-tower-secret",
+  "your-new-game-id": "generate-a-long-random-string"
 }
 ```
 
