@@ -38,5 +38,19 @@
       "https://pfaustino.itch.io"
     ],
     "uniquePlayer": true
+  },
+  "bullet-hell": {
+    "name": "Bullet Hell",
+    "sort": "desc",
+    "maxValue": 9007199254740991,
+    "minValue": 1,
+    "displayMeta": ["wave", "time", "kills", "difficulty", "coins"],
+    "allowedOrigins": [
+      "http://localhost:5177",
+      "https://pfaustino.github.io",
+      "https://pfaustino.itch.io",
+      "https://bullet-hell.vercel.app"
+    ],
+    "uniquePlayer": true
   }
 }

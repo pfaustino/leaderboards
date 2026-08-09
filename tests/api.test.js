@@ -20,6 +20,15 @@ describe('games', () => {
   it('rejects unknown games', () => {
     expect(getGameConfig('not-a-game')).toBeNull();
   });
+
+  it('loads bullet-hell config', () => {
+    const cfg = getGameConfig('bullet-hell');
+    expect(cfg?.name).toBe('Bullet Hell');
+    expect(cfg?.sort).toBe('desc');
+    expect(cfg?.minValue).toBe(1);
+    expect(cfg?.maxValue).toBe(Number.MAX_SAFE_INTEGER);
+    expect(cfg?.displayMeta).toContain('wave');
+  });
 });
 
 describe('cors', () => {
