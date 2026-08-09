@@ -11,6 +11,7 @@ Register games in [`games.json`](./games.json):
 - **GigaZonk** (`gigazonk`) — ranks by survival time (seconds)
 - **Calamari Damacy** (`calamari-damacy`) — ranks by clear size (cm)
 - **Tower of Power** (`tower-of-power`) — ranks by waves cleared
+- **Bullet Hell** (`bullet-hell`) — ranks by wave → time → kills (composite score)
 
 ## API
 
@@ -95,6 +96,8 @@ Use `vercel dev` for local API testing (requires Vercel CLI + linked project).
 
 ## Adding a new game
 
+> **Agent-autonomous flow:** see **[`docs/adding-a-game.md`](./docs/adding-a-game.md)** for the full runbook (Vercel CLI/API, no dashboard edits). The one human step is the initial `vercel login`.
+
 Register the game on the **leaderboards server first**, then wire the game client. Until this is deployed, `GET /api/leaderboard?game=<id>` returns **404 unknown game**.
 
 ### 1. Add an entry to `games.json`
@@ -140,11 +143,17 @@ Use a lowercase kebab-case `id` (this becomes the `game` query param and POST bo
 }
 ```
 
-### 2. Add a write key in Vercel
+### 2. Add a write key — autonomous (no dashboard)
 
-In the leaderboards Vercel project, edit the `WRITE_KEYS` environment variable (Production **and** Preview).
+See **[`docs/adding-a-game.md`](./docs/adding-a-game.md)** — the full runbook. The short version:
 
-⚠️ **Do not replace the whole value** — `WRITE_KEYS` is a JSON object mapping every game id to its secret. If you overwrite it with only the new game entry, the other games' writes start failing with 401. **Copy the current value, then add your new entry** to the existing JSON:
+1. **Vercel CLI required** — `npm i -g vercel` and `vercel login` (one-time browser step).
+2. Build the **complete merged** `WRITE_KEYS` JSON: all existing games' verified keys (read from their repos/deployed bundles, or the backup file if one exists) **plus** a new random key for the new game.
+3. **PATCH** the env var via the Vercel REST API (body `{"value": "<full merged JSON>"}` only — no `type` field) for the `leaderboards` project, Production + Preview.
+4. Redeploy (`vercel deploy --prod --project leaderboards --yes`).
+5. Verify with **zero-pollution probes** (see runbook): existing games return `200 updated:false`, the new game returns `201`.
+
+⚠️ `WRITE_KEYS` is a JSON object mapping every game id to its secret. The value is **masked** from CLI/API — never read-then-edit; always PATCH the complete value built from verified keys. Example shape:
 
 ```json
 {
