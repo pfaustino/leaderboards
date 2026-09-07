@@ -52,5 +52,18 @@
       "https://bullet-hell.vercel.app"
     ],
     "uniquePlayer": true
+  },
+  "zombieshooter": {
+    "name": "Zombie Shooter",
+    "sort": "desc",
+    "maxValue": 1000000,
+    "minValue": 1,
+    "displayMeta": ["wave"],
+    "allowedOrigins": [
+      "http://localhost:8080",
+      "https://pfaustino.github.io",
+      "https://pfaustino.itch.io"
+    ],
+    "uniquePlayer": true
   }
 }

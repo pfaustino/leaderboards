@@ -29,6 +29,14 @@ describe('games', () => {
     expect(cfg?.maxValue).toBe(Number.MAX_SAFE_INTEGER);
     expect(cfg?.displayMeta).toContain('wave');
   });
+
+  it('loads zombieshooter config', () => {
+    const cfg = getGameConfig('zombieshooter');
+    expect(cfg?.name).toBe('Zombie Shooter');
+    expect(cfg?.sort).toBe('desc');
+    expect(cfg?.minValue).toBe(1);
+    expect(cfg?.displayMeta).toContain('wave');
+  });
 });
 
 describe('cors', () => {
