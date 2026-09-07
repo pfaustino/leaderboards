@@ -36,6 +36,8 @@ describe('games', () => {
     expect(cfg?.sort).toBe('desc');
     expect(cfg?.minValue).toBe(1);
     expect(cfg?.displayMeta).toContain('wave');
+    expect(cfg?.displayMeta).toContain('kills');
+    expect(cfg?.maxValue).toBe(Number.MAX_SAFE_INTEGER);
   });
 });
 

@@ -56,9 +56,9 @@
   "zombieshooter": {
     "name": "Zombie Shooter",
     "sort": "desc",
-    "maxValue": 1000000,
+    "maxValue": 9007199254740991,
     "minValue": 1,
-    "displayMeta": ["wave"],
+    "displayMeta": ["wave", "kills"],
     "allowedOrigins": [
       "http://localhost:8080",
       "https://pfaustino.github.io",
