@@ -39,6 +39,16 @@ describe('games', () => {
     expect(cfg?.displayMeta).toContain('kills');
     expect(cfg?.maxValue).toBe(Number.MAX_SAFE_INTEGER);
   });
+
+  it('loads the-snug config', () => {
+    const cfg = getGameConfig('the-snug');
+    expect(cfg?.name).toBe('The Snug');
+    expect(cfg?.sort).toBe('desc');
+    expect(cfg?.minValue).toBe(0);
+    expect(cfg?.maxValue).toBe(1000);
+    expect(cfg?.displayMeta).toContain('questions');
+    expect(cfg?.displayMeta).toContain('night');
+  });
 });
 
 describe('cors', () => {
@@ -58,7 +68,14 @@ describe('cors', () => {
   it('allows any configured origin on preflight (no game config)', () => {
     // OPTIONS preflight has no body, so game config is unknown
     expect(isAllowedOrigin('https://calamari-damacy.vercel.app', null)).toBe(true);
+    expect(isAllowedOrigin('https://pub-quiz-dusky.vercel.app', null)).toBe(true);
     expect(isAllowedOrigin('https://evil.example', null)).toBe(false);
+  });
+
+  it('allows The Snug production origin', () => {
+    const cfg = getGameConfig('the-snug');
+    expect(isAllowedOrigin('https://pub-quiz-dusky.vercel.app', cfg)).toBe(true);
+    expect(isAllowedOrigin('http://localhost:4371', cfg)).toBe(true);
   });
 });
 

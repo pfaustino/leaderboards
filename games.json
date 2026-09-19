@@ -65,5 +65,17 @@
       "https://pfaustino.itch.io"
     ],
     "uniquePlayer": true
+  },
+  "the-snug": {
+    "name": "The Snug",
+    "sort": "desc",
+    "maxValue": 1000,
+    "minValue": 0,
+    "displayMeta": ["questions", "night"],
+    "allowedOrigins": [
+      "http://localhost:4371",
+      "https://pub-quiz-dusky.vercel.app"
+    ],
+    "uniquePlayer": true
   }
 }

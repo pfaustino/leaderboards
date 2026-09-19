@@ -12,6 +12,8 @@ Register games in [`games.json`](./games.json):
 - **Calamari Damacy** (`calamari-damacy`) — ranks by clear size (cm)
 - **Tower of Power** (`tower-of-power`) — ranks by waves cleared
 - **Bullet Hell** (`bullet-hell`) — ranks by wave → time → kills (composite score)
+- **Zombie Shooter** (`zombieshooter`) — ranks by wave → kills (composite score)
+- **The Snug** (`the-snug`) — ranks by correct answers in a night
 
 ## API
 
